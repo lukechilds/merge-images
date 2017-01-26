@@ -1,10 +1,10 @@
 // Return Promise
 const imageMerge = (sources = []) => new Promise(resolve => {
 	// Load sources
-	const images = sources.map(src => new Promise(resolve => {
+	const images = sources.map(source => new Promise(resolve => {
 		const img = new Image();
-		img.onload = () => resolve(img);
-		img.src = src;
+		img.onload = () => resolve(Object.assign({}, source, {img}));
+		img.src = source.src;
 	}));
 
 	// Create canvas
@@ -15,11 +15,11 @@ const imageMerge = (sources = []) => new Promise(resolve => {
 	Promise.all(images)
 		.then(images => {
 			// Set canvas dimensions
-			canvas.width = Math.max(images.map(img => img.width));
-			canvas.height = Math.max(images.map(img => img.height));
+			canvas.width = Math.max(...images.map(image => image.img.width));
+			canvas.height = Math.max(...images.map(image => image.img.height));
 
 			// Draw images to canvas
-			images.forEach(img => ctx.drawImage(img, 0, 0));
+			images.forEach(image => ctx.drawImage(image.img, image.x || 0, image.y || 0));
 
 			// Resolve data uri
 			resolve(canvas.toDataURL());
