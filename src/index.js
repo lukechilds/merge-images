@@ -2,6 +2,12 @@
 const imageMerge = (sources = []) => new Promise(resolve => {
 	// Load sources
 	const images = sources.map(source => new Promise(resolve => {
+		// Convert strings to objects
+		if (typeof source === 'string') {
+			source = {src: source};
+		}
+
+		// Resolve source and img when loaded
 		const img = new Image();
 		img.onload = () => resolve(Object.assign({}, source, {img}));
 		img.src = source.src;
