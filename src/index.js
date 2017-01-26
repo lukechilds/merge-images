@@ -14,6 +14,10 @@ const imageMerge = (sources = []) => new Promise(resolve => {
 	// When sources have loaded
 	Promise.all(images)
 		.then(images => {
+			// Set canvas dimensions
+			canvas.width = Math.max(images.map(img => img.width));
+			canvas.height = Math.max(images.map(img => img.height));
+
 			// Draw images to canvas
 			images.forEach(img => ctx.drawImage(img, 0, 0));
 
