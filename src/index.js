@@ -1,5 +1,5 @@
 // Return Promise
-const imageMerge = (sources = []) => new Promise(resolve => {
+const imageMerge = (sources = [], options = {}) => new Promise(resolve => {
 	// Load sources
 	const images = sources.map(source => new Promise(resolve => {
 		// Convert strings to objects
@@ -21,8 +21,8 @@ const imageMerge = (sources = []) => new Promise(resolve => {
 	Promise.all(images)
 		.then(images => {
 			// Set canvas dimensions
-			canvas.width = Math.max(...images.map(image => image.img.width));
-			canvas.height = Math.max(...images.map(image => image.img.height));
+			canvas.width = options.width || Math.max(...images.map(image => image.img.width));
+			canvas.height = options.height || Math.max(...images.map(image => image.img.height));
 
 			// Draw images to canvas
 			images.forEach(image => ctx.drawImage(image.img, image.x || 0, image.y || 0));
