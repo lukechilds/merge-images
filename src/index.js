@@ -1,5 +1,5 @@
 // Return Promise
-const imageMerge = (sources = [], options = {}) => new Promise(resolve => {
+const imageMerge = (sources = [], options = {format: 'image/png'}) => new Promise(resolve => {
 	// Load sources
 	const images = sources.map(source => new Promise(resolve => {
 		// Convert strings to objects
@@ -28,7 +28,7 @@ const imageMerge = (sources = [], options = {}) => new Promise(resolve => {
 			images.forEach(image => ctx.drawImage(image.img, image.x || 0, image.y || 0));
 
 			// Resolve data uri
-			resolve(canvas.toDataURL());
+			resolve(canvas.toDataURL(options.format));
 		});
 });
 
