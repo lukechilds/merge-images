@@ -21,8 +21,9 @@ const imageMerge = (sources = [], options = {format: 'image/png'}) => new Promis
 	Promise.all(images)
 		.then(images => {
 			// Set canvas dimensions
-			canvas.width = options.width || Math.max(...images.map(image => image.img.width));
-			canvas.height = options.height || Math.max(...images.map(image => image.img.height));
+			const getSize = dim => options[dim] || Math.max(...images.map(image => image.img[dim]));
+			canvas.width = getSize('width');
+			canvas.height = getSize('height');
 
 			// Draw images to canvas
 			images.forEach(image => ctx.drawImage(image.img, image.x || 0, image.y || 0));
