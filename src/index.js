@@ -1,7 +1,8 @@
 // Return Promise
 const imageMerge = (sources = [], options = {format: 'image/png'}) => new Promise(resolve => {
-	// Use global window if we don't have one
-	const window = options.window || window;
+	// Setup browser/node specific variables
+	const canvas = options.Canvas ? new options.Canvas() : window.document.createElement('canvas');
+	const Image = options.Canvas ? options.Canvas.Image : window.Image;
 
 	// Load sources
 	const images = sources.map(source => new Promise(resolve => {
@@ -11,13 +12,12 @@ const imageMerge = (sources = [], options = {format: 'image/png'}) => new Promis
 		}
 
 		// Resolve source and img when loaded
-		const img = new window.Image();
+		const img = new Image();
 		img.onload = () => resolve(Object.assign({}, source, {img}));
 		img.src = source.src;
 	}));
 
-	// Create canvas
-	const canvas = window.document.createElement('canvas');
+	// Get canvas context
 	const ctx = canvas.getContext('2d');
 
 	// When sources have loaded
