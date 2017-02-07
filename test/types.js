@@ -7,5 +7,5 @@ test('mergeImages is a function', t => {
 });
 
 test('mergeImages returns a Promise', t => {
-	t.true(mergeImages([], {Canvas}) instanceof Promise);
+	t.true(mergeImages([], { Canvas }) instanceof Promise);
 });

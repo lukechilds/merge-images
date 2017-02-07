@@ -1,5 +1,5 @@
 // Return Promise
-const mergeImages = (sources = [], options = {format: 'image/png'}) => new Promise(resolve => {
+const mergeImages = (sources = [], options = { format: 'image/png' }) => new Promise(resolve => {
 	// Setup browser/node specific variables
 	const canvas = options.Canvas ? new options.Canvas() : window.document.createElement('canvas');
 	const Image = options.Canvas ? options.Canvas.Image : window.Image;
@@ -8,12 +8,12 @@ const mergeImages = (sources = [], options = {format: 'image/png'}) => new Promi
 	const images = sources.map(source => new Promise(resolve => {
 		// Convert strings to objects
 		if (typeof source === 'string') {
-			source = {src: source};
+			source = { src: source };
 		}
 
 		// Resolve source and img when loaded
 		const img = new Image();
-		img.onload = () => resolve(Object.assign({}, source, {img}));
+		img.onload = () => resolve(Object.assign({}, source, { img }));
 		img.src = source.src;
 	}));
 
