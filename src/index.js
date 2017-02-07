@@ -1,5 +1,5 @@
 // Return Promise
-const imageMerge = (sources = [], options = {format: 'image/png'}) => new Promise(resolve => {
+const mergeImages = (sources = [], options = {format: 'image/png'}) => new Promise(resolve => {
 	// Setup browser/node specific variables
 	const canvas = options.Canvas ? new options.Canvas() : window.document.createElement('canvas');
 	const Image = options.Canvas ? options.Canvas.Image : window.Image;
@@ -36,4 +36,4 @@ const imageMerge = (sources = [], options = {format: 'image/png'}) => new Promis
 		});
 });
 
-module.exports = imageMerge;
+module.exports = mergeImages;
