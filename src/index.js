@@ -7,7 +7,7 @@ const mergeImages = (sources = [], options = { format: 'image/png' }) => new Pro
 	// Load sources
 	const images = sources.map(source => new Promise(resolve => {
 		// Convert strings to objects
-		if (typeof source === 'string') {
+		if (source.constructor.name !== 'Object') {
 			source = { src: source };
 		}
 
