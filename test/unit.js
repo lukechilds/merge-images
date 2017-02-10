@@ -13,8 +13,7 @@ test('mergeImages correctly merges images', async t => {
 	const images = await Promise.all(['body.png', 'mouth.png', 'eyes.png'].map(image => fixtures.getImage(image)));
 	const b64 = await mergeImages(images, { Canvas });
 
-	const face = await fixtures.getImage('face.png');
-	const expectedB64 = `data:image/png;base64,${face.toString('base64')}`;
+	const expectedB64 = await fixtures.getDataURI('face.png');
 
 	t.is(b64, expectedB64);
 });

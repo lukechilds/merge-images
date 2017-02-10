@@ -35,6 +35,7 @@
     "ava": "^0.18.1",
     "canvas": "^1.6.2",
     "coveralls": "^2.11.15",
+    "datauri": "^1.0.5",
     "eslint-config-xo-lukechilds": "^1.0.0",
     "nyc": "^10.0.0",
     "pify": "^2.3.0",
