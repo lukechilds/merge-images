@@ -10,10 +10,10 @@ test('mergeImages returns empty b64 string if nothing is passed in', async t => 
 
 test('mergeImages correctly merges images', async t => {
 	t.plan(1);
-	const images = await Promise.all(['body', 'mouth', 'eyes'].map(image => fixtures.getImage(image)));
+	const images = await Promise.all(['body.png', 'mouth.png', 'eyes.png'].map(image => fixtures.getImage(image)));
 	const b64 = await mergeImages(images, { Canvas });
 
-	const face = await fixtures.getImage('face');
+	const face = await fixtures.getImage('face.png');
 	const expectedB64 = `data:image/png;base64,${face.toString('base64')}`;
 
 	t.is(b64, expectedB64);
