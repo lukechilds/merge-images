@@ -1,7 +1,7 @@
 import test from 'ava';
 import Canvas from 'canvas';
-import fixtures from './fixtures';
 import mergeImages from '../';
+import fixtures from './fixtures';
 
 test('mergeImages returns empty b64 string if nothing is passed in', async t => {
 	t.plan(1);
