@@ -31,8 +31,13 @@ const mergeImages = (sources = [], options = { format: 'image/png' }) => new Pro
 			// Draw images to canvas
 			images.forEach(image => ctx.drawImage(image.img, image.x || 0, image.y || 0));
 
-			// Resolve data uri
-			resolve(canvas.toDataURL(options.format));
+			if (options.Canvas && options.format === 'image/jpeg') {
+				// Resolve data URI for node-canvas jpeg async
+				canvas.toDataURL(options.format, (err, jpeg) => resolve(jpeg));
+			} else {
+				// Resolve all other data URIs sync
+				resolve(canvas.toDataURL(options.format));
+			}
 		});
 });
 
