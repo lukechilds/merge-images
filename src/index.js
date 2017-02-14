@@ -21,7 +21,7 @@ const mergeImages = (sources = [], options = { format: 'image/png' }) => new Pro
 	const ctx = canvas.getContext('2d');
 
 	// When sources have loaded
-	Promise.all(images)
+	resolve(Promise.all(images)
 		.then(images => {
 			// Set canvas dimensions
 			const getSize = dim => options[dim] || Math.max(...images.map(image => image.img[dim]));
@@ -33,17 +33,19 @@ const mergeImages = (sources = [], options = { format: 'image/png' }) => new Pro
 
 			if (options.Canvas && options.format === 'image/jpeg') {
 				// Resolve data URI for node-canvas jpeg async
-				canvas.toDataURL(options.format, (err, jpeg) => {
-					if (err) {
-						throw err;
-					}
-					resolve(jpeg);
+				return new Promise(resolve => {
+					canvas.toDataURL(options.format, (err, jpeg) => {
+						if (err) {
+							throw err;
+						}
+						resolve(jpeg);
+					});
 				});
-			} else {
-				// Resolve all other data URIs sync
-				resolve(canvas.toDataURL(options.format));
 			}
-		});
+
+			// Resolve all other data URIs sync
+			return canvas.toDataURL(options.format);
+		}));
 });
 
 module.exports = mergeImages;
