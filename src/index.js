@@ -33,7 +33,12 @@ const mergeImages = (sources = [], options = { format: 'image/png' }) => new Pro
 
 			if (options.Canvas && options.format === 'image/jpeg') {
 				// Resolve data URI for node-canvas jpeg async
-				canvas.toDataURL(options.format, (err, jpeg) => resolve(jpeg));
+				canvas.toDataURL(options.format, (err, jpeg) => {
+					if (err) {
+						throw err;
+					}
+					resolve(jpeg);
+				});
 			} else {
 				// Resolve all other data URIs sync
 				resolve(canvas.toDataURL(options.format));
