@@ -18,21 +18,19 @@ test('mergeImages returns correct data URI', async t => {
 	t.is(b64, expectedB64);
 });
 
-test('mergeImages encodes custom image formats', async t => {
-	const image = await fixtures.getImage('face.png');
-	const formats = ['png', 'jpeg'];
-	t.plan(formats.length);
-
-	const tests = formats.map(async format => {
+['png', 'jpeg'].forEach(format => {
+	test(`mergeImages encodes ${format} format`, async t => {
+		t.plan(1);
+		const image = await fixtures.getImage('face.png');
 		const b64 = await mergeImages([image], {
 			format: `image/${format}`,
 			Canvas: Canvas
 		});
+
 		const expectedB64 = await fixtures.getDataURI(`face.${format}`);
+
 		t.is(b64, expectedB64);
 	});
-
-	await Promise.all(tests);
 });
 
 test('mergeImages correctly merges images', async t => {
