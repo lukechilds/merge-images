@@ -5,7 +5,7 @@ import fixtures from './fixtures';
 
 test('mergeImages returns empty b64 string if nothing is passed in', async t => {
 	t.plan(1);
-	await mergeImages([], { Canvas }).then(b64 => t.is(b64, 'data:,'));
+	await mergeImages([], { Canvas }).then(b64 => t.true(b64 === 'data:,'));
 });
 
 test('mergeImages returns correct data URI', async t => {
@@ -15,7 +15,7 @@ test('mergeImages returns correct data URI', async t => {
 
 	const expectedB64 = await fixtures.getDataURI('face.png');
 
-	t.is(b64, expectedB64);
+	t.true(b64 === expectedB64);
 });
 
 ['png', 'jpeg'].forEach(format => {
@@ -29,7 +29,7 @@ test('mergeImages returns correct data URI', async t => {
 
 		const expectedB64 = await fixtures.getDataURI(`face.${format}`);
 
-		t.is(b64, expectedB64);
+		t.true(b64 === expectedB64);
 	});
 });
 
@@ -40,5 +40,5 @@ test('mergeImages correctly merges images', async t => {
 
 	const expectedB64 = await fixtures.getDataURI('face.png');
 
-	t.is(b64, expectedB64);
+	t.true(b64 === expectedB64);
 });
