@@ -1,6 +1,7 @@
 // Defaults
 const defaultOptions = {
 	format: 'image/png',
+	quality: 0.92,
 	width: undefined,
 	height: undefined
 };
@@ -43,7 +44,10 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 			if (options.Canvas && options.format === 'image/jpeg') {
 				// Resolve data URI for node-canvas jpeg async
 				return new Promise(resolve => {
-					canvas.toDataURL(options.format, (err, jpeg) => {
+					canvas.toDataURL(options.format, {
+						quality: options.quality,
+						progressive: false
+					}, (err, jpeg) => {
 						if (err) {
 							throw err;
 						}
@@ -53,7 +57,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 			}
 
 			// Resolve all other data URIs sync
-			return canvas.toDataURL(options.format);
+			return canvas.toDataURL(options.format, options.quality);
 		}));
 });
 
