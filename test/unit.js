@@ -56,3 +56,17 @@ test('mergeImages uses custom dimensions', async t => {
 
 	t.true(b64 === expectedB64);
 });
+
+test('mergeImages uses custom jpeg quality', async t => {
+	t.plan(1);
+	const image = await fixtures.getImage('face.png');
+	const b64 = await mergeImages([image], {
+		format: 'image/jpeg',
+		quality: 0.1,
+		Canvas: Canvas
+	});
+
+	const expectedB64 = await fixtures.getDataURI('face-low-quality.jpeg');
+
+	t.true(b64 === expectedB64);
+});
