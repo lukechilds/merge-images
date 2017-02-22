@@ -7,7 +7,7 @@ const defaultOptions = {
 };
 
 // Return Promise
-const mergeImages = (sources = [], options = {}) => new Promise((resolve, reject) => {
+const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 	options = Object.assign({}, defaultOptions, options);
 
 	// Setup browser/node specific variables
@@ -18,7 +18,7 @@ const mergeImages = (sources = [], options = {}) => new Promise((resolve, reject
 	}
 
 	// Load sources
-	const images = sources.map(source => new Promise(resolve => {
+	const images = sources.map(source => new Promise((resolve, reject) => {
 		// Convert strings to objects
 		if (source.constructor.name !== 'Object') {
 			source = { src: source };
