@@ -42,3 +42,17 @@ test('mergeImages correctly merges images', async t => {
 
 	t.true(b64 === expectedB64);
 });
+
+test('mergeImages uses custom dimensions', async t => {
+	t.plan(1);
+	const image = await fixtures.getImage('face.png');
+	const b64 = await mergeImages([image], {
+		width: 128,
+		height: 128,
+		Canvas: Canvas
+	});
+
+	const expectedB64 = await fixtures.getDataURI('face-custom-dimension.png');
+
+	t.true(b64 === expectedB64);
+});
