@@ -1,5 +1,9 @@
 // Defaults
-const defaultOptions = { format: 'image/png' };
+const defaultOptions = {
+	format: 'image/png',
+	width: undefined,
+	height: undefined
+};
 
 // Return Promise
 const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
