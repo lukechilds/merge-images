@@ -1,5 +1,10 @@
+// Defaults
+const defaultOptions = { format: 'image/png' };
+
 // Return Promise
-const mergeImages = (sources = [], options = { format: 'image/png' }) => new Promise(resolve => {
+const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
+	options = Object.assign({}, defaultOptions, options);
+
 	// Setup browser/node specific variables
 	const canvas = options.Canvas ? new options.Canvas() : window.document.createElement('canvas');
 	const Image = options.Canvas ? options.Canvas.Image : window.Image;
