@@ -7,7 +7,7 @@ const defaultOptions = {
 };
 
 // Return Promise
-const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
+const mergeImages = (sources = [], options = {}) => new Promise((resolve, reject) => {
 	options = Object.assign({}, defaultOptions, options);
 
 	// Setup browser/node specific variables
@@ -26,6 +26,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 
 		// Resolve source and img when loaded
 		const img = new Image();
+		img.onerror = () => reject(new Error('Couldn\'t load image'));
 		img.onload = () => resolve(Object.assign({}, source, { img }));
 		img.src = source.src;
 	}));
