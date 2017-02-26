@@ -57,6 +57,23 @@ test('mergeImages uses custom dimensions', async t => {
 	t.true(b64 === expectedB64);
 });
 
+test('mergeImages uses custom positions', async t => {
+	t.plan(1);
+	const images = await Promise.all([
+		{ src: 'body.png', x: 0, y: 0 },
+		{ src: 'eyes.png', x: 32, y: 0 },
+		{ src: 'mouth.png', x: 16, y: 0 }
+	].map(image => fixtures.getImage(image.src).then(src => {
+		image.src = src;
+		return image;
+	})));
+	const b64 = await mergeImages(images, { Canvas });
+
+	const expectedB64 = await fixtures.getDataURI('face-custom-positions.png');
+
+	t.true(b64 === expectedB64);
+});
+
 test('mergeImages uses custom jpeg quality', async t => {
 	t.plan(1);
 	const image = await fixtures.getImage('face.png');
