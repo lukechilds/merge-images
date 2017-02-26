@@ -14,6 +14,26 @@ Images can be overlaid on top of each other and repositioned. Returns a Promise 
 npm install --save merge-images
 ```
 
+## Usage
+
+With the following images:
+
+`/body.png`|`/eyes.png`|`/mouth.png`
+---|---|---
+<img src="/test/fixtures/body.png" width="128">|<img src="/test/fixtures/eyes.png" width="128">|<img src="/test/fixtures/mouth.png" width="128">
+
+```js
+const mergeImages = require('merge-images');
+
+mergeImages(['/body.png', '/eyes.png', '/mouth.png'])
+  .then(b64 => console.log(b64));
+  // data:image/png;base64,iVBORw0KGgoAA...
+```
+
+And that base64 output looks like this:
+
+<img src="/test/fixtures/face.png" width="128">
+
 ## License
 
 MIT © Luke Childs
