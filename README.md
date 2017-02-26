@@ -52,6 +52,23 @@ Using the same source images as above would output this:
 
 <img src="/test/fixtures/face-custom-positions.png" width="128">
 
+### Dimensions
+
+By default the new image dimensions will be set to the width of the widest source image and the height of the tallest source image. You can manually specify your own dimensions in the options object:
+
+```js
+mergeImages(['/body.png', '/eyes.png', '/mouth.png'], {
+  width: 128,
+  height: 128
+})
+  .then(b64 => document.querySelector('img').src = b64);
+  // data:image/png;base64,iVBORw0KGgoAA...
+```
+
+Which will look like this:
+
+<img src="/test/fixtures/face-custom-dimension.png" width="64">
+
 ## License
 
 MIT © Luke Childs
