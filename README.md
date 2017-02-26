@@ -34,6 +34,24 @@ And that would update the `img` element to show this image:
 
 <img src="/test/fixtures/face.png" width="128">
 
+### Positioning
+
+Those source png images where already the right dimensions to be overlaid on top of each other. You can also supply an array of objects with x/y co-ords to manually position each image:
+
+```js
+mergeImages([
+  { src: 'body.png', x: 0, y: 0 },
+  { src: 'eyes.png', x: 32, y: 0 },
+  { src: 'mouth.png', x: 16, y: 0 }
+])
+  .then(b64 => ...);
+  // data:image/png;base64,iVBORw0KGgoAA...
+```
+
+Using the same source images as above would output this:
+
+<img src="/test/fixtures/face-custom-positions.png" width="128">
+
 ## License
 
 MIT © Luke Childs
