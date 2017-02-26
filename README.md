@@ -26,11 +26,11 @@ With the following images:
 const mergeImages = require('merge-images');
 
 mergeImages(['/body.png', '/eyes.png', '/mouth.png'])
-  .then(b64 => console.log(b64));
+  .then(b64 => document.querySelector('img').src = b64);
   // data:image/png;base64,iVBORw0KGgoAA...
 ```
 
-And that base64 output looks like this:
+And that would update the `img` element to show this image:
 
 <img src="/test/fixtures/face.png" width="128">
 
