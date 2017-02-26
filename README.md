@@ -61,7 +61,7 @@ mergeImages(['/body.png', '/eyes.png', '/mouth.png'], {
   width: 128,
   height: 128
 })
-  .then(b64 => document.querySelector('img').src = b64);
+  .then(b64 => ...);
   // data:image/png;base64,iVBORw0KGgoAA...
 ```
 
