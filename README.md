@@ -71,6 +71,23 @@ Which will look like this:
 
 <img src="/test/fixtures/face-custom-dimension.png" width="64">
 
+## Node.js Usage
+
+Usage in Node.js is the same, however you'll need to also require [node-canvas](https://github.com/Automattic/node-canvas) and pass it in via the options object.
+
+```js
+const mergeImages = require('merge-images');
+const Canvas = require('canvas');
+
+mergeImages(['./body.png', './eyes.png', './mouth.png'], {
+  Canvas: Canvas
+})
+  .then(b64 => ...);
+  // data:image/png;base64,iVBORw0KGgoAA...
+```
+
+One thing to note is that you need to provide a valid image source for the node-canvas `Image` rather than a DOM `Image`. Notice the above example uses a file path, not a URL like the other examples. Check the node-canvas docs for more information on valid `Image` sources.
+
 ## License
 
 MIT © Luke Childs
