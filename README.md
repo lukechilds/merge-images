@@ -24,6 +24,8 @@ With the following images:
 ---|---|---
 <img src="/test/fixtures/body.png" width="128">|<img src="/test/fixtures/eyes.png" width="128">|<img src="/test/fixtures/mouth.png" width="128">
 
+You can do:
+
 ```js
 const mergeImages = require('merge-images');
 
