@@ -86,7 +86,7 @@ mergeImages(['./body.png', './eyes.png', './mouth.png'], {
   // data:image/png;base64,iVBORw0KGgoAA...
 ```
 
-One thing to note is that you need to provide a valid image source for the node-canvas `Image` rather than a DOM `Image`. Notice the above example uses a file path, not a URL like the other examples. Check the node-canvas docs for more information on valid `Image` sources.
+One thing to note is that you need to provide a valid image source for the node-canvas `Image` rather than a DOM `Image`. Notice the above example uses a file path, not a relative URL like the other examples. Check the node-canvas docs for more information on valid `Image` sources.
 
 ## License
 
