@@ -3,7 +3,8 @@ const defaultOptions = {
 	format: 'image/png',
 	quality: 0.92,
 	width: undefined,
-	height: undefined
+	height: undefined,
+	Canvas: undefined
 };
 
 // Return Promise
