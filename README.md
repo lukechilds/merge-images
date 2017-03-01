@@ -90,6 +90,59 @@ mergeImages(['./body.png', './eyes.png', './mouth.png'], {
 
 One thing to note is that you need to provide a valid image source for the node-canvas `Image` rather than a DOM `Image`. Notice the above example uses a file path, not a relative URL like the other examples. Check the node-canvas docs for more information on valid `Image` sources.
 
+## API
+
+### mergeImages(images, [options])
+
+Returns a Promise which resolves to a base64 data URI
+
+#### images
+
+Type: `array`<br>
+Default: `[]`
+
+Array of valid image sources for `new Image()`.<br>
+Alternatively an [array of objects](#positioning) with `x`/`y` co-ords and `src` property with a valid image source.
+
+#### options
+
+Type: `object`
+
+##### options.format
+
+Type: `string`<br>
+Default: `'image/png'`
+
+A DOMString indicating the image format.
+
+##### options.quality
+
+Type: `number`<br>
+Default: `0.92`
+
+A number between 0 and 1 indicating image quality if the requested format is image/jpeg or image/webp.
+
+##### options.width
+
+Type: `number`<br>
+Default: `undefined`
+
+The width in pixels the rendered image should be. Defaults to the width of the widest source image.
+
+##### options.height
+
+Type: `number`<br>
+Default: `undefined`
+
+The height in pixels the rendered image should be. Defaults to the height of the tallest source image.
+
+##### options.Canvas
+
+Type: `Canvas`<br>
+Default: `undefined`
+
+Canvas implementation to be used to allow usage outside of the browser. e.g Node.js with node-canvas.
+
 ## License
 
 MIT © Luke Childs
