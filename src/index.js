@@ -20,7 +20,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 
 	// Load sources
 	const images = sources.map(source => new Promise((resolve, reject) => {
-		// Convert strings to objects
+		// Convert sources to objects
 		if (source.constructor.name !== 'Object') {
 			source = { src: source };
 		}
