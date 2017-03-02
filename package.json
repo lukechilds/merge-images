@@ -1,6 +1,6 @@
 {
   "name": "merge-images",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Easily compose images together without messing around with canvas",
   "main": "src/index.js",
   "scripts": {
