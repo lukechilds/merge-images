@@ -1,7 +1,7 @@
 {
   "name": "merge-images",
   "version": "0.0.0",
-  "description": "Easily compose images together without messing around in canvas",
+  "description": "Easily compose images together without messing around with canvas",
   "main": "src/index.js",
   "scripts": {
     "lint": "xo",
