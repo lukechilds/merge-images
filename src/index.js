@@ -66,4 +66,4 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 		}));
 });
 
-module.exports = mergeImages;
+export default mergeImages;
