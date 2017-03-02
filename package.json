@@ -2,11 +2,16 @@
   "name": "merge-images",
   "version": "1.0.0",
   "description": "Easily compose images together without messing around with canvas",
-  "main": "src/index.js",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es2015.js",
   "scripts": {
-    "lint": "xo",
+    "prebuild": "rm -rf dist",
+    "build": "rollup -c",
+    "pretest": "npm run build",
     "test": "nyc ava",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "prelint": "npm run build",
+    "lint": "xo"
   },
   "xo": {
     "env": "browser",
@@ -33,12 +38,15 @@
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.18.1",
+    "camelcase": "^4.0.0",
     "canvas": "^1.6.2",
     "coveralls": "^2.11.15",
     "datauri": "^1.0.5",
     "eslint-config-xo-lukechilds": "^1.0.0",
     "nyc": "^10.0.0",
     "pify": "^2.3.0",
+    "rollup": "^0.41.4",
+    "rollup-plugin-buble": "^0.15.0",
     "xo": "^0.17.1"
   }
 }
