@@ -16,6 +16,12 @@ Images can be overlaid on top of each other and repositioned. The function retur
 npm install --save merge-images
 ```
 
+or for quick testing:
+
+```html
+<script src="https://unpkg.com/merge-images"></script>
+```
+
 ## Usage
 
 With the following images:
