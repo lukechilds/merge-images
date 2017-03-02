@@ -6,7 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/lukechilds/merge-images/badge.svg?branch=master)](https://coveralls.io/github/lukechilds/merge-images?branch=master)
 [![npm](https://img.shields.io/npm/v/merge-images.svg)](https://www.npmjs.com/package/merge-images)
 
-Canvas can be kind of a pain to work with, especially when you need to set everything up just to do a fairly simple image manipulation. This module abstracts away all the repetitive tasks into one simple function call.
+Canvas can be kind of a pain to work with sometimes. There's lots of repetitive code to get a working canvas instance, load an image into that instance, handle async image loads correctly etc. This can lead to quite a lot of boilerplate code for something relatively simple like merging some images together. `merge-images` abstracts away all the repetitive tasks into one simple function call.
 
 Images can be overlaid on top of each other and repositioned. The function returns a Promise which resolves to a base64 data URI. Works both in the browser and in Node.js.
 
