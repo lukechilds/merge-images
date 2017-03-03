@@ -11,7 +11,8 @@
     "test": "nyc ava",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prelint": "npm run build",
-    "lint": "xo"
+    "lint": "xo",
+    "prepublish": "npm run build"
   },
   "xo": {
     "env": "browser",
