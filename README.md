@@ -1,5 +1,7 @@
 # merge-images
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/lukechilds/merge-images.svg)](https://greenkeeper.io/)
+
 > Easily compose images together without messing around with canvas
 
 [![Build Status](https://travis-ci.org/lukechilds/merge-images.svg?branch=master)](https://travis-ci.org/lukechilds/merge-images)
