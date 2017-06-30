@@ -24,7 +24,7 @@ test('mergeImages returns correct data URI', async t => {
 		const image = await fixtures.getImage('face.png');
 		const b64 = await mergeImages([image], {
 			format: `image/${format}`,
-			Canvas: Canvas
+			Canvas
 		});
 
 		const expectedB64 = await fixtures.getDataURI(`face.${format}`);
@@ -49,7 +49,7 @@ test('mergeImages uses custom dimensions', async t => {
 	const b64 = await mergeImages([image], {
 		width: 128,
 		height: 128,
-		Canvas: Canvas
+		Canvas
 	});
 
 	const expectedB64 = await fixtures.getDataURI('face-custom-dimension.png');
@@ -80,7 +80,7 @@ test('mergeImages uses custom jpeg quality', async t => {
 	const b64 = await mergeImages([image], {
 		format: 'image/jpeg',
 		quality: 0.1,
-		Canvas: Canvas
+		Canvas
 	});
 
 	const expectedB64 = await fixtures.getDataURI('face-low-quality.jpeg');
