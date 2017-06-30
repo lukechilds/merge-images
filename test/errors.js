@@ -4,10 +4,10 @@ import mergeImages from '../';
 
 test('mergeImages rejects Promise if node-canvas instance isn\'t passed in', async t => {
 	t.plan(1);
-	t.throws(mergeImages([]));
+	await t.throws(mergeImages([]));
 });
 
 test('mergeImages rejects Promise if image load errors', async t => {
 	t.plan(1);
-	t.throws(mergeImages([1], { Canvas }));
+	await t.throws(mergeImages([1], { Canvas }));
 });
