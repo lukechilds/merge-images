@@ -4,21 +4,21 @@ import camelCase from 'camelcase';
 const pkg = require('./package.json');
 
 export default {
-	entry: 'src/index.js',
+	input: 'src/index.js',
 	plugins: [
 		buble()
 	],
-	targets: [
+	output: [
 		{
-			dest: pkg.main,
+			file: pkg.main,
 			format: 'umd',
-			moduleName: camelCase(pkg.name),
-			sourceMap: true
+			name: camelCase(pkg.name),
+			sourcemap: true
 		},
 		{
-			dest: pkg.module,
+			file: pkg.module,
 			format: 'es',
-			sourceMap: true
+			sourcemap: true
 		}
 	]
 };
