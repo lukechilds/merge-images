@@ -47,7 +47,7 @@ And that would update the `img` element to show this image:
 
 ### Positioning
 
-Those source png images where already the right dimensions to be overlaid on top of each other. You can also supply an array of objects with x/y co-ords to manually position each image:
+Those source png images were already the right dimensions to be overlaid on top of each other. You can also supply an array of objects with x/y co-ords to manually position each image:
 
 ```js
 mergeImages([
