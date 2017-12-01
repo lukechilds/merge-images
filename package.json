@@ -1,6 +1,6 @@
 {
   "name": "merge-images",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Easily compose images together without messing around with canvas",
   "main": "dist/index.umd.js",
   "module": "dist/index.es2015.js",
