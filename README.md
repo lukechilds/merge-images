@@ -78,6 +78,20 @@ mergeImages(['/body.png', '/eyes.png', '/mouth.png'], {
 
 Which will look like this:
 
+### Opactiy
+
+Set the opacity of an image.
+
+```js
+mergeImages([
+  { src: 'body.png', x: 0, y: 0 },
+  { src: 'eyes.png', x: 32, y: 0, opacity: 0.5 }
+])
+  .then(b64 => ...);
+  // data:image/png;base64,iVBORw0KGgoAA...
+```
+
+
 <img src="/test/fixtures/face-custom-dimension.png" width="64">
 
 ## Node.js Usage
