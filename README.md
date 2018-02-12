@@ -78,7 +78,7 @@ mergeImages(['/body.png', '/eyes.png', '/mouth.png'], {
 
 Which will look like this:
 
-### Opactiy
+### Opacity
 
 Set the opacity of an image.
 
