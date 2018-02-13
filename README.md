@@ -78,6 +78,8 @@ mergeImages(['/body.png', '/eyes.png', '/mouth.png'], {
 
 Which will look like this:
 
+<img src="/test/fixtures/face-custom-dimension.png" width="64">
+
 ### Opacity
 
 Set the opacity of an image.
