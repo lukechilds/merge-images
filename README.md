@@ -85,14 +85,15 @@ Set the opacity of an image.
 ```js
 mergeImages([
   { src: 'body.png', x: 0, y: 0 },
-  { src: 'eyes.png', x: 32, y: 0, opacity: 0.5 }
+  { src: 'eyes.png', x: 32, y: 0, opacity: 0.7 },
+  { src: 'mouth.png', x: 16, y: 0, opacity: 0.3 }
 ])
   .then(b64 => ...);
   // data:image/png;base64,iVBORw0KGgoAA...
 ```
 
 
-<img src="/test/fixtures/face-custom-dimension.png" width="64">
+<img src="/test/fixtures/face-opacity.png" width="64">
 
 ## Node.js Usage
 
