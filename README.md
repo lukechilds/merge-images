@@ -93,7 +93,7 @@ mergeImages([
 ```
 
 
-<img src="/test/fixtures/face-opacity.png" width="64">
+<img src="/test/fixtures/face-opacity.png" width="128">
 
 ## Node.js Usage
 
