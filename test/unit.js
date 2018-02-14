@@ -91,9 +91,9 @@ test('mergeImages uses custom jpeg quality', async t => {
 test('mergeImages uses opacity', async t => {
 	t.plan(1);
 	const images = await Promise.all([
-		{ src: 'body.png', x: 0, y: 0 },
-		{ src: 'eyes.png', x: 32, y: 0, opacity: 0.7 },
-		{ src: 'mouth.png', x: 16, y: 0, opacity: 0.3 }
+		{ src: 'body.png' },
+		{ src: 'eyes.png', opacity: 0.7 },
+		{ src: 'mouth.png', opacity: 0.3 }
 	].map(image => fixtures.getImage(image.src).then(src => {
 		image.src = src;
 		return image;

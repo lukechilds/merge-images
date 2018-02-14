@@ -69,9 +69,9 @@ The opacity can also be tweaked on each image.
 
 ```js
 mergeImages([
-  { src: 'body.png', x: 0, y: 0 },
-  { src: 'eyes.png', x: 32, y: 0, opacity: 0.7 },
-  { src: 'mouth.png', x: 16, y: 0, opacity: 0.3 }
+  { src: 'body.png' },
+  { src: 'eyes.png', opacity: 0.7 },
+  { src: 'mouth.png', opacity: 0.3 }
 ])
   .then(b64 => ...);
   // data:image/png;base64,iVBORw0KGgoAA...
