@@ -82,7 +82,7 @@ Which will look like this:
 
 ### Opacity
 
-Set the opacity of an image.
+The opacity can also be tweaked on each image.
 
 ```js
 mergeImages([
