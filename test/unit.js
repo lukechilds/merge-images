@@ -87,3 +87,20 @@ test('mergeImages uses custom jpeg quality', async t => {
 
 	t.true(b64 === expectedB64);
 });
+
+test('mergeImages uses opacity', async t => {
+	t.plan(1);
+	const images = await Promise.all([
+		{ src: 'body.png' },
+		{ src: 'eyes.png', opacity: 0.7 },
+		{ src: 'mouth.png', opacity: 0.3 }
+	].map(image => fixtures.getImage(image.src).then(src => {
+		image.src = src;
+		return image;
+	})));
+	const b64 = await mergeImages(images, { Canvas });
+
+	const expectedB64 = await fixtures.getDataURI('face-opacity.png');
+
+	t.true(b64 === expectedB64);
+});

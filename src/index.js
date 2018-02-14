@@ -44,7 +44,10 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 			canvas.height = getSize('height');
 
 			// Draw images to canvas
-			images.forEach(image => ctx.drawImage(image.img, image.x || 0, image.y || 0));
+			images.forEach(image => {
+				ctx.globalAlpha = image.opacity ? image.opacity : 1;
+				return ctx.drawImage(image.img, image.x || 0, image.y || 0);
+			});
 
 			if (options.Canvas && options.format === 'image/jpeg') {
 				// Resolve data URI for node-canvas jpeg async
