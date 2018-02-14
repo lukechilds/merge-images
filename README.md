@@ -63,6 +63,22 @@ Using the same source images as above would output this:
 
 <img src="/test/fixtures/face-custom-positions.png" width="128">
 
+### Opacity
+
+The opacity can also be tweaked on each image.
+
+```js
+mergeImages([
+  { src: 'body.png', x: 0, y: 0 },
+  { src: 'eyes.png', x: 32, y: 0, opacity: 0.7 },
+  { src: 'mouth.png', x: 16, y: 0, opacity: 0.3 }
+])
+  .then(b64 => ...);
+  // data:image/png;base64,iVBORw0KGgoAA...
+```
+
+<img src="/test/fixtures/face-opacity.png" width="128">
+
 ### Dimensions
 
 By default the new image dimensions will be set to the width of the widest source image and the height of the tallest source image. You can manually specify your own dimensions in the options object:
@@ -79,22 +95,6 @@ mergeImages(['/body.png', '/eyes.png', '/mouth.png'], {
 Which will look like this:
 
 <img src="/test/fixtures/face-custom-dimension.png" width="64">
-
-### Opacity
-
-The opacity can also be tweaked on each image.
-
-```js
-mergeImages([
-  { src: 'body.png', x: 0, y: 0 },
-  { src: 'eyes.png', x: 32, y: 0, opacity: 0.7 },
-  { src: 'mouth.png', x: 16, y: 0, opacity: 0.3 }
-])
-  .then(b64 => ...);
-  // data:image/png;base64,iVBORw0KGgoAA...
-```
-
-<img src="/test/fixtures/face-opacity.png" width="128">
 
 ## Node.js Usage
 
