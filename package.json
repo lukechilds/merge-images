@@ -50,7 +50,7 @@
     "nyc": "^11.0.2",
     "pify": "^3.0.0",
     "rollup": "^0.55.3",
-    "rollup-plugin-buble": "^0.18.0",
+    "rollup-plugin-buble": "^0.19.0",
     "xo": "^0.18.2"
   }
 }
