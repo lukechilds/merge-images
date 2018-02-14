@@ -94,7 +94,6 @@ mergeImages([
   // data:image/png;base64,iVBORw0KGgoAA...
 ```
 
-
 <img src="/test/fixtures/face-opacity.png" width="128">
 
 ## Node.js Usage
