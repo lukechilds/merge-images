@@ -46,6 +46,9 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 			// Draw images to canvas
 			images.forEach(image => {
 				ctx.globalAlpha = image.opacity ? image.opacity : 1;
+				if (image.width && image.height) {
+					return ctx.drawImage(image.img, image.x || 0, image.y || 0, image.width, image.height);
+				}
 				return ctx.drawImage(image.img, image.x || 0, image.y || 0);
 			});
 
