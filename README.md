@@ -63,6 +63,16 @@ Using the same source images as above would output this:
 
 <img src="/test/fixtures/face-custom-positions.png" width="128">
 
+### Resize
+
+Each source image width and height can be adjusted.
+
+```js
+mergeImages([{ src: 'face.png', width: 128, height: 128 }]
+```
+
+You must be set `width` and `height` otherwise you can't see the source image.
+
 ### Opacity
 
 The opacity can also be tweaked on each image.

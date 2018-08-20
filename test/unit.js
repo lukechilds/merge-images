@@ -5,7 +5,9 @@ import fixtures from './fixtures';
 
 test('mergeImages returns empty b64 string if nothing is passed in', async t => {
 	t.plan(1);
-	await mergeImages([], { Canvas }).then(b64 => t.true(b64 === 'data:,'));
+	const b64 = await mergeImages([], { Canvas });
+
+	t.true(b64 === 'data:,');
 });
 
 test('mergeImages returns correct data URI', async t => {
@@ -101,6 +103,18 @@ test('mergeImages uses opacity', async t => {
 	const b64 = await mergeImages(images, { Canvas });
 
 	const expectedB64 = await fixtures.getDataURI('face-opacity.png');
+
+	t.true(b64 === expectedB64);
+});
+
+test('mergeImages adjust soure image width and height', async t => {
+	t.plan(1);
+	const image = await fixtures.getImage('face.png');
+	const b64 = await mergeImages([{ src: image, width: 128, height: 128 }], {
+		Canvas
+	});
+
+	const expectedB64 = await fixtures.getDataURI('face-128x128.png');
 
 	t.true(b64 === expectedB64);
 });
