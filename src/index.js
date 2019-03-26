@@ -12,7 +12,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 	options = Object.assign({}, defaultOptions, options);
 
 	// Setup browser/Node.js specific variables
-	const canvas = options.Canvas ? new options.Canvas() : window.document.createElement('canvas');
+	const canvas = options.Canvas ? new options.Canvas.Canvas() : window.document.createElement('canvas');
 	const Image = options.Canvas ? options.Canvas.Image : window.Image;
 	if (options.Canvas) {
 		options.quality *= 100;
