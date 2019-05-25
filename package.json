@@ -42,6 +42,7 @@
   "dependencies": {},
   "devDependencies": {
     "ava": "^1.4.1",
+    "browser-env": "^3.2.6",
     "camelcase": "^5.0.0",
     "canvas": "^2.5.0",
     "coveralls": "^3.0.0",
