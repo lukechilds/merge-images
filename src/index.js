@@ -1,3 +1,5 @@
+/* eslint new-cap: ["error", { "properties": false }] */
+
 // Defaults
 const defaultOptions = {
 	format: 'image/png',
@@ -8,22 +10,22 @@ const defaultOptions = {
 };
 
 const createCanvas = options =>
-  options.Canvas ?
-    new options.Canvas.createCanvas() :
-    window.document.createElement('canvas');
+	options.Canvas ?
+		new options.Canvas.createCanvas() :
+		window.document.createElement('canvas');
 
 const createImage = options =>
-  options.Canvas ?
-    options.Canvas.Image :
-    window.Image;
+	options.Canvas ?
+		options.Canvas.Image :
+		window.Image;
 
 // Return Promise
 const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 	options = Object.assign({}, defaultOptions, options);
 
 	// Setup browser/Node.js specific variables
-  const canvas = createCanvas(options);
-  const Image = createImage(options);
+	const canvas = createCanvas(options);
+	const Image = createImage(options);
 	if (options.Canvas) {
 		options.quality *= 100;
 	}
@@ -36,33 +38,34 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 		}
 
 		// Resolve source and img when loaded
-    if (source.width && source.height) {
-      const img = new Image(source.width, source.height);
+		if (source.width && source.height) {
+			const img = new Image(source.width, source.height);
 
-      img.onerror = () => reject(new Error('Couldn\'t load image'));
-      img.onload = () => {
-        const { width, height } = source;
-        const canvas = createCanvas(options);
-        const ctx = canvas.getContext('2d');
+			img.addEventListener('error', () => reject(new Error('Couldn\'t load image')));
+			img.addEventListener('load', () => {
+				const { width, height } = source;
+				const canvas = createCanvas(options);
+				const ctx = canvas.getContext('2d');
 
-        canvas.width = width;
-        canvas.height = height;
-        ctx.drawImage(img, 0, 0, width, height);
+				canvas.width = width;
+				canvas.height = height;
+				ctx.drawImage(img, 0, 0, width, height);
 
-        // Adjust source image width and height
-        const resizeImg = new Image();
-        resizeImg.onerror = () => reject(new Error('Couldn\'t load image'));
-        resizeImg.onload = () => resolve(Object.assign({}, source, { img: resizeImg }));
-        resizeImg.src = canvas.toDataURL();
-      };
-      img.src = source.src;
-    } else {
-      // Resolve source and img when loaded
-      const img = new Image();
-      img.onerror = () => reject(new Error('Couldn\'t load image'));
-      img.onload = () => resolve(Object.assign({}, source, { img }));
-      img.src = source.src;
-    }
+				// Adjust source image width and height
+				const resizeImg = new Image();
+				resizeImg.addEventListener('error', () => reject(new Error('Couldn\'t load image')));
+				resizeImg.addEventListener('load', () => resolve(Object.assign({}, source, { img: resizeImg })));
+				resizeImg.src = canvas.toDataURL();
+			});
+
+			img.src = source.src;
+		} else {
+			// Resolve source and img when loaded
+			const img = new Image();
+			img.addEventListener('error', () => reject(new Error('Couldn\'t load image')));
+			img.addEventListener('load', () => resolve(Object.assign({}, source, { img })));
+			img.src = source.src;
+		}
 	}));
 
 	// Get canvas context
@@ -92,6 +95,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 						if (err) {
 							throw err;
 						}
+
 						resolve(jpeg);
 					});
 				});

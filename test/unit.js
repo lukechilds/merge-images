@@ -1,28 +1,30 @@
 import test from 'ava';
 import Canvas from 'canvas';
-import mergeImages from '../';
+import mergeImages from '..';
 import fixtures from './fixtures';
-const fs = require('fs')
-const Buffer = require('safe-buffer').Buffer
-require('browser-env')()
 
-function decodeBase64Image (dataString) {
-  let matches = dataString.match(/^data:([A-Za-z-+/]+);base64,(.+)$/)
-  let response = {}
+// Const fs = require('fs');
+// const { Buffer } = require('safe-buffer');
+require('browser-env')();
 
-  if (matches.length !== 3) {
-    return new Error('Invalid input string')
-  }
-  response.type = matches[1]
-  response.data = Buffer.from(matches[2], 'base64')
-  return response
-}
+// Function decodeBase64Image(dataString) {
+// 	const matches = dataString.match(/^data:([A-Za-z-+/]+);base64,(.+)$/);
+// 	const response = {};
+//
+// 	if (matches.length !== 3) {
+// 		return new Error('Invalid input string');
+// 	}
+//
+// 	response.type = matches[1];
+// 	response.data = Buffer.from(matches[2], 'base64');
+// 	return response;
+// }
 
 test('mergeImages returns empty b64 string if nothing is passed in', async t => {
 	t.plan(1);
-  const b64 = await mergeImages([], { Canvas });
+	const b64 = await mergeImages([], { Canvas });
 
-  t.true(b64 === 'data:,');
+	t.true(b64 === 'data:,');
 });
 
 test('mergeImages returns correct data URI', async t => {
@@ -46,8 +48,8 @@ test('mergeImages returns correct data URI', async t => {
 
 		const expectedB64 = await fixtures.getDataURI(`face.${format}`);
 
-    // let imageBuffer = await decodeBase64Image(b64)
-    // fs.writeFile(`face-new.${format}`, imageBuffer.data, () => { console.log('image saved') })
+		// Let imageBuffer = await decodeBase64Image(b64)
+		// fs.writeFile(`face-new.${format}`, imageBuffer.data, () => { console.log('image saved') })
 
 		t.true(b64 === expectedB64);
 	});
@@ -74,8 +76,8 @@ test('mergeImages uses custom dimensions', async t => {
 
 	const expectedB64 = await fixtures.getDataURI('face-custom-dimension.png');
 
-  // let imageBuffer = await decodeBase64Image(b64)
-  // fs.writeFile(`face-custom-dimension-new.png`, imageBuffer.data, () => { console.log('image saved') })
+	// Let imageBuffer = await decodeBase64Image(b64)
+	// fs.writeFile(`face-custom-dimension-new.png`, imageBuffer.data, () => { console.log('image saved') })
 
 	t.true(b64 === expectedB64);
 });
@@ -108,8 +110,8 @@ test('mergeImages uses custom jpeg quality', async t => {
 
 	const expectedB64 = await fixtures.getDataURI('face-low-quality.jpeg');
 
-  // let imageBuffer = await decodeBase64Image(b64)
-  // fs.writeFile(`face-low-quality.jpeg`, imageBuffer.data, () => { console.log('image saved') })
+	// Let imageBuffer = await decodeBase64Image(b64)
+	// fs.writeFile(`face-low-quality.jpeg`, imageBuffer.data, () => { console.log('image saved') })
 
 	t.true(b64 === expectedB64);
 });
@@ -132,16 +134,16 @@ test('mergeImages uses opacity', async t => {
 });
 
 test('mergeImages adjust soure image width and height', async t => {
-  t.plan(1);
-  const image = await fixtures.getImage('face.png');
-  const b64 = await mergeImages([{ src: image, width: 128, height: 128 }], {
-    Canvas
-  });
+	t.plan(1);
+	const image = await fixtures.getImage('face.png');
+	const b64 = await mergeImages([{ src: image, width: 128, height: 128 }], {
+		Canvas
+	});
 
-  const expectedB64 = await fixtures.getDataURI('face-128x128.png');
+	const expectedB64 = await fixtures.getDataURI('face-128x128.png');
 
-  // let imageBuffer = await decodeBase64Image(b64)
-  // fs.writeFile(`face-128x128.png`, imageBuffer.data, () => { console.log('image saved') })
+	// Let imageBuffer = await decodeBase64Image(b64)
+	// fs.writeFile(`face-128x128.png`, imageBuffer.data, () => { console.log('image saved') })
 
-  t.true(b64 === expectedB64);
+	t.true(b64 === expectedB64);
 });
