@@ -50,7 +50,7 @@ test('mergeImages returns correct data URI', async t => {
 		const expectedB64 = await fixtures.getDataURI(`face-${currentOs}.${format}`);
 
 		// let imageBuffer = await decodeBase64Image(b64)
-		// fs.writeFile(`face.${format}`, imageBuffer.data, () => { console.log('image saved') })
+		// fs.writeFile(`face-${currentOs}.${format}`, imageBuffer.data, () => { console.log('image saved') })
 
 		t.true(b64 === expectedB64);
 	});
@@ -112,7 +112,7 @@ test('mergeImages uses custom jpeg quality', async t => {
 	const expectedB64 = await fixtures.getDataURI(`face-low-quality-${currentOs}.jpeg`);
 
 	// let imageBuffer = await decodeBase64Image(b64)
-	// fs.writeFile(`face-low-quality.jpeg`, imageBuffer.data, () => { console.log('image saved') })
+	// fs.writeFile(`face-low-quality-${currentOs}.jpeg`, imageBuffer.data, () => { console.log('image saved') })
 
 	t.true(b64 === expectedB64);
 });
