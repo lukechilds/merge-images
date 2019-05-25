@@ -9,7 +9,7 @@ const defaultOptions = {
 
 const createCanvas = options =>
   options.Canvas ?
-    new options.Canvas() :
+    new options.Canvas.Canvas() :
     window.document.createElement('canvas');
 
 const createImage = options =>
