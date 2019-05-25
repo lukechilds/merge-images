@@ -5,6 +5,7 @@ import fixtures from './fixtures';
 
 const fs = require('fs');
 const { Buffer } = require('safe-buffer');
+const currentOs = process.platform
 require('browser-env')();
 
 function decodeBase64Image(dataString) {
@@ -46,10 +47,10 @@ test('mergeImages returns correct data URI', async t => {
 			Canvas
 		});
 
-		const expectedB64 = await fixtures.getDataURI(`face.${format}`);
+		const expectedB64 = await fixtures.getDataURI(`face-${currentOs}.${format}`);
 
 		// let imageBuffer = await decodeBase64Image(b64)
-		// fs.writeFile(`face-new.${format}`, imageBuffer.data, () => { console.log('image saved') })
+		// fs.writeFile(`face.${format}`, imageBuffer.data, () => { console.log('image saved') })
 
 		t.true(b64 === expectedB64);
 	});
@@ -77,7 +78,7 @@ test('mergeImages uses custom dimensions', async t => {
 	const expectedB64 = await fixtures.getDataURI('face-custom-dimension.png');
 
 	// let imageBuffer = await decodeBase64Image(b64)
-	// fs.writeFile(`face-custom-dimension-new.png`, imageBuffer.data, () => { console.log('image saved') })
+	// fs.writeFile(`face-custom-dimension.png`, imageBuffer.data, () => { console.log('image saved') })
 
 	t.true(b64 === expectedB64);
 });
@@ -108,7 +109,7 @@ test('mergeImages uses custom jpeg quality', async t => {
 		Canvas
 	});
 
-	const expectedB64 = await fixtures.getDataURI('face-low-quality.jpeg');
+	const expectedB64 = await fixtures.getDataURI(`face-low-quality-${currentOs}.jpeg`);
 
 	// let imageBuffer = await decodeBase64Image(b64)
 	// fs.writeFile(`face-low-quality.jpeg`, imageBuffer.data, () => { console.log('image saved') })
