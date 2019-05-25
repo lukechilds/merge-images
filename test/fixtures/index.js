@@ -2,11 +2,14 @@ const fs = require('fs');
 const pify = require('pify');
 const Datauri = require('datauri');
 
-module.exports = {
+const fixtures = {
 	getImage: image => pify(fs.readFile)(`${__dirname}/${image}`),
 	getDataURI: image => {
 		const datauri = new Datauri();
 		const ext = image.substring(image.lastIndexOf('.'));
-		return this.getImage(image).then(buffer => datauri.format(ext, buffer).content);
+		return pify(fs.readFile)(`${__dirname}/${image}`)
+			.then(buffer => datauri.format(ext, buffer).content);
 	}
 };
+
+module.exports = fixtures;

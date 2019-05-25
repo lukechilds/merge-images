@@ -12,7 +12,7 @@ addons:
       - g++-4.9
 env:
   - CXX=g++-4.9
-script: npm run lint && npm test
+script: npm test
 after_success: npm run coverage
 notifications:
   email:
