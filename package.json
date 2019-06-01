@@ -41,7 +41,7 @@
   "homepage": "https://github.com/lukechilds/merge-images",
   "dependencies": {},
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^2.0.0",
     "camelcase": "^5.0.0",
     "canvas": "^1.6.2",
     "coveralls": "^3.0.0",
