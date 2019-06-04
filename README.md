@@ -1,26 +1,22 @@
-# merge-images
+# merge-images-v2
 
 > Easily compose images together without messing around with canvas
 
-[![Build Status](https://travis-ci.org/lukechilds/merge-images.svg?branch=master)](https://travis-ci.org/lukechilds/merge-images)
-[![Coverage Status](https://coveralls.io/repos/github/lukechilds/merge-images/badge.svg?branch=master)](https://coveralls.io/github/lukechilds/merge-images?branch=master)
-[![npm](https://img.shields.io/npm/dm/merge-images.svg)](https://www.npmjs.com/package/merge-images)
-[![npm](https://img.shields.io/npm/v/merge-images.svg)](https://www.npmjs.com/package/merge-images)
+[![Build Status](https://travis-ci.org/marcgodard/merge-images-v2.svg?branch=master)](https://travis-ci.org/marcgodard/merge-images-v2)
+[![Coverage Status](https://coveralls.io/repos/github/marcgodard/merge-images-v2/badge.svg?branch=master)](https://coveralls.io/github/marcgodard/merge-images-v2?branch=master)
+[![npm](https://img.shields.io/npm/dm/merge-images-v2.svg)](https://www.npmjs.com/package/merge-images-v2)
+[![npm](https://img.shields.io/npm/v/merge-images-v2.svg)](https://www.npmjs.com/package/merge-images-v2)
 
-Canvas can be kind of a pain to work with sometimes, especially if you just need a canvas context to do something relatively simple like merge some images together. `merge-images` abstracts away all the repetitive tasks into one simple function call.
+Canvas can be kind of a pain to work with sometimes, especially if you just need a canvas context to do something relatively simple like merge some images together. `merge-images-v2` abstracts away all the repetitive tasks into one simple function call.
 
 Images can be overlaid on top of each other and repositioned. The function returns a Promise which resolves to a base64 data URI. Supports both the browser and Node.js.
+
+This is an updated version of `merge-images` by Luke Childs with all libraries updated and multi operating system testing. I also removed `xo` as this linting caused many issues and I didn't like the way it worked. It also now works with the newest version of canvas.
 
 ## Install
 
 ```shell
-npm install --save merge-images
-```
-
-or for quick testing:
-
-```html
-<script src="https://unpkg.com/merge-images"></script>
+npm install --save merge-images-v2
 ```
 
 ## Usage
@@ -34,7 +30,7 @@ With the following images:
 You can do:
 
 ```js
-import mergeImages from 'merge-images';
+import mergeImages from 'merge-images-v2';
 
 mergeImages(['/body.png', '/eyes.png', '/mouth.png'])
   .then(b64 => document.querySelector('img').src = b64);
@@ -177,4 +173,4 @@ Canvas implementation to be used to allow usage outside of the browser. e.g Node
 
 ## License
 
-MIT © Luke Childs
+MIT

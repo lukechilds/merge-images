@@ -1,7 +1,7 @@
 {
-  "name": "merge-images",
-  "version": "2.0.0",
-  "description": "Easily compose images together without messing around with canvas",
+  "name": "merge-images-v2",
+  "version": "2.0.1",
+  "description": "Easily compose images together without messing around with canvas, but has canvas for node",
   "main": "dist/index.umd.js",
   "module": "dist/index.es2015.js",
   "files": [
@@ -16,28 +16,24 @@
     "prelint": "npm run build",
     "prepublish": "npm run build"
   },
-  "xo": {
-    "env": "browser",
-    "extends": "xo-lukechilds"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lukechilds/merge-images.git"
+    "url": "git+https://github.com/marcgodard/merge-images-v2.git"
   },
   "keywords": [
     "compose",
     "merge",
+    "rezise",
     "images",
     "without",
-    "no",
     "canvas"
   ],
-  "author": "Luke Childs <lukechilds123@gmail.com> (http://lukechilds.co.uk)",
+  "author": "Originally: Luke Childs <lukechilds123@gmail.com> (http://lukechilds.co.uk), Currently: Marc Godard <godardm@gmail.com> (https://marcgodard.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lukechilds/merge-images/issues"
+    "url": "https://github.com/marcgodard/merge-images-v2/issues"
   },
-  "homepage": "https://github.com/lukechilds/merge-images",
+  "homepage": "https://github.com/marcgodard/merge-images-v2",
   "dependencies": {},
   "devDependencies": {
     "ava": "^1.4.1",
@@ -46,11 +42,9 @@
     "canvas": "^2.5.0",
     "coveralls": "^3.0.0",
     "datauri": "^2.0.0",
-    "eslint-config-xo-lukechilds": "^1.0.1",
     "nyc": "^14.1.1",
     "pify": "^4.0.1",
     "rollup": "^1.12.3",
-    "rollup-plugin-buble": "^0.19.2",
-    "xo": "^0.24.0"
+    "rollup-plugin-buble": "^0.19.2"
   }
 }
