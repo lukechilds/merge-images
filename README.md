@@ -3,7 +3,7 @@
 > Easily compose images together without messing around with canvas
 
 [![Build Status](https://travis-ci.org/marcgodard/merge-images-v2.svg?branch=master)](https://travis-ci.org/marcgodard/merge-images-v2)
-[![Coverage Status](https://coveralls.io/repos/github/marcgodard/merge-images-v2/badge.svg?branch=master)](https://coveralls.io/github/marcgodard/merge-images-v2?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/MarcGodard/merge-images-v2/badge.svg?branch=master)](https://coveralls.io/github/MarcGodard/merge-images-v2?branch=master)
 [![npm](https://img.shields.io/npm/dm/merge-images-v2.svg)](https://www.npmjs.com/package/merge-images-v2)
 [![npm](https://img.shields.io/npm/v/merge-images-v2.svg)](https://www.npmjs.com/package/merge-images-v2)
 
