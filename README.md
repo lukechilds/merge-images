@@ -14,7 +14,7 @@ Images can be overlaid on top of each other and repositioned. The function retur
 ## Install
 
 ```shell
-npm install --save merge-images
+npm install --save https://github.com/mkhizeryounas/merge-images/tarball/master
 ```
 
 or for quick testing:
