@@ -1,5 +1,5 @@
 import test from 'ava';
-import Canvas from 'canvas';
+import { Canvas, Image } from 'canvas';
 import mergeImages from '../';
 
 test('mergeImages is a function', t => {
@@ -7,5 +7,5 @@ test('mergeImages is a function', t => {
 });
 
 test('mergeImages returns a Promise', t => {
-	t.true(mergeImages([], { Canvas }) instanceof Promise);
+	t.true(mergeImages([], { Canvas, Image }) instanceof Promise);
 });

@@ -1,17 +1,17 @@
 import test from 'ava';
-import Canvas from 'canvas';
+import { Canvas, Image } from 'canvas';
 import mergeImages from '../';
 import fixtures from './fixtures';
 
 test('mergeImages returns empty b64 string if nothing is passed in', async t => {
 	t.plan(1);
-	await mergeImages([], { Canvas }).then(b64 => t.true(b64 === 'data:,'));
+	await mergeImages([], { Canvas, Image }).then(b64 => t.true(b64 === 'data:,'));
 });
 
 test('mergeImages returns correct data URI', async t => {
 	t.plan(1);
 	const image = await fixtures.getImage('face.png');
-	const b64 = await mergeImages([image], { Canvas });
+	const b64 = await mergeImages([image], { Canvas, Image });
 
 	const expectedB64 = await fixtures.getDataURI('face.png');
 
@@ -24,7 +24,8 @@ test('mergeImages returns correct data URI', async t => {
 		const image = await fixtures.getImage('face.png');
 		const b64 = await mergeImages([image], {
 			format: `image/${format}`,
-			Canvas
+			Canvas,
+			Image
 		});
 
 		const expectedB64 = await fixtures.getDataURI(`face.${format}`);
@@ -36,7 +37,7 @@ test('mergeImages returns correct data URI', async t => {
 test('mergeImages correctly merges images', async t => {
 	t.plan(1);
 	const images = await Promise.all(['body.png', 'mouth.png', 'eyes.png'].map(image => fixtures.getImage(image)));
-	const b64 = await mergeImages(images, { Canvas });
+	const b64 = await mergeImages(images, { Canvas, Image });
 
 	const expectedB64 = await fixtures.getDataURI('face.png');
 
@@ -49,7 +50,8 @@ test('mergeImages uses custom dimensions', async t => {
 	const b64 = await mergeImages([image], {
 		width: 128,
 		height: 128,
-		Canvas
+		Canvas,
+		Image
 	});
 
 	const expectedB64 = await fixtures.getDataURI('face-custom-dimension.png');
@@ -67,7 +69,7 @@ test('mergeImages uses custom positions', async t => {
 		image.src = src;
 		return image;
 	})));
-	const b64 = await mergeImages(images, { Canvas });
+	const b64 = await mergeImages(images, { Canvas, Image });
 
 	const expectedB64 = await fixtures.getDataURI('face-custom-positions.png');
 
@@ -80,7 +82,8 @@ test('mergeImages uses custom jpeg quality', async t => {
 	const b64 = await mergeImages([image], {
 		format: 'image/jpeg',
 		quality: 0.1,
-		Canvas
+		Canvas,
+		Image
 	});
 
 	const expectedB64 = await fixtures.getDataURI('face-low-quality.jpeg');
@@ -98,7 +101,7 @@ test('mergeImages uses opacity', async t => {
 		image.src = src;
 		return image;
 	})));
-	const b64 = await mergeImages(images, { Canvas });
+	const b64 = await mergeImages(images, { Canvas, Image });
 
 	const expectedB64 = await fixtures.getDataURI('face-opacity.png');
 
