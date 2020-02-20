@@ -166,6 +166,13 @@ Default: `undefined`
 
 Canvas implementation to be used to allow usage outside of the browser. e.g Node.js with node-canvas.
 
+##### options.crossOrigin
+
+Type: `string`<br>
+Default: `undefined`
+
+The `crossOrigin` attribute that `Image` instances should use. e.g `Anonymous` to [support CORS-enabled images](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image).
+
 ## License
 
 MIT © Luke Childs
