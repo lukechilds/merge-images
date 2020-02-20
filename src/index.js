@@ -30,6 +30,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 		img.onerror = () => reject(new Error('Couldn\'t load image'));
 		img.onload = () => resolve(Object.assign({}, source, { img }));
 		img.src = source.src;
+		img.crossOrigin = options.crossOrigin;
 	}));
 
 	// Get canvas context
