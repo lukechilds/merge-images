@@ -4,7 +4,8 @@ const defaultOptions = {
 	quality: 0.92,
 	width: undefined,
 	height: undefined,
-	Canvas: undefined
+	Canvas: undefined,
+	crossOrigin: undefined
 };
 
 // Return Promise
