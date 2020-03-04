@@ -4,7 +4,8 @@ const defaultOptions = {
 	quality: 0.92,
 	width: undefined,
 	height: undefined,
-	Canvas: undefined
+	Canvas: undefined,
+	crossOrigin: undefined
 };
 
 // Return Promise
@@ -27,6 +28,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 
 		// Resolve source and img when loaded
 		const img = new Image();
+		img.crossOrigin = options.crossOrigin;
 		img.onerror = () => reject(new Error('Couldn\'t load image'));
 		img.onload = () => resolve(Object.assign({}, source, { img }));
 		img.src = source.src;
