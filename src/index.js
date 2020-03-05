@@ -5,7 +5,8 @@ const defaultOptions = {
 	width: undefined,
 	height: undefined,
 	Canvas: undefined,
-	crossOrigin: undefined
+	crossOrigin: undefined,
+	rotate: undefined
 };
 
 // Return Promise
@@ -45,11 +46,26 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 			canvas.width = getSize('width');
 			canvas.height = getSize('height');
 
-			// Draw images to canvas
-			images.forEach(image => {
-				ctx.globalAlpha = image.opacity ? image.opacity : 1;
-				return ctx.drawImage(image.img, image.x || 0, image.y || 0);
-			});
+      // Draw images to canvas
+      images.forEach(image => {
+        ctx.globalAlpha = image.opacity ? image.opacity : 1;
+
+        let drawImage;
+        if (image.rotate) {
+          const x = image.x ? image.x + canvas.width / 2 : canvas.width / 2;
+          const y = image.y ? image.y + canvas.height / 2 : canvas.height / 2;
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate(image.rotate * Math.PI / 180);
+          ctx.translate(-x, -y);
+          drawImage = ctx.drawImage(image.img, image.x || 0, image.y || 0);
+          ctx.restore();
+        } else {
+          drawImage = ctx.drawImage(image.img, image.x || 0, image.y || 0);
+        }
+
+        return drawImage;
+      });
 
 			if (options.Canvas && options.format === 'image/jpeg') {
 				// Resolve data URI for node-canvas jpeg async
