@@ -100,9 +100,24 @@ Which will look like this:
 
 Usage in Node.js is the same, however you'll need to also require [node-canvas](https://github.com/Automattic/node-canvas) and pass it in via the options object.
 
+**node-canvas 1.x**
 ```js
 const mergeImages = require('merge-images');
 const Canvas = require('canvas');
+
+mergeImages(['./body.png', './eyes.png', './mouth.png'], {
+  Canvas: Canvas
+})
+  .then(b64 => ...);
+  // data:image/png;base64,iVBORw0KGgoAA...
+```
+
+**node-canvas 2.x**
+```js
+const mergeImages = require('merge-images');
+const { Canvas, Image } = require('canvas');
+
+Canvas.Image = Image;
 
 mergeImages(['./body.png', './eyes.png', './mouth.png'], {
   Canvas: Canvas
