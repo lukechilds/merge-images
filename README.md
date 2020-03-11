@@ -98,7 +98,7 @@ Which will look like this:
 
 ## Node.js Usage
 
-Usage in Node.js is the same, however you'll need to also require [node-canvas](https://github.com/Automattic/node-canvas) and pass it in via the options object.
+Usage in Node.js is the same, however you'll need to also require [node-canvas](https://github.com/Automattic/node-canvas) (v2) and pass it in via the options object.
 
 ```js
 const mergeImages = require('merge-images');

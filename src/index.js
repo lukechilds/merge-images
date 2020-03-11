@@ -11,18 +11,9 @@ const defaultOptions = {
 const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 	options = Object.assign({}, defaultOptions, options);
 
-	if (options.Canvas && !options.Image && !options.Canvas.Image) {
-		// See https://github.com/Automattic/node-canvas/blob/master/CHANGELOG.md#200
-		throw new Error('"options.Image" is needed. You probably want `import { Image } from "canvas"`');
-	}
-
 	// Setup browser/Node.js specific variables
 	const canvas = options.Canvas ? new options.Canvas() : window.document.createElement('canvas');
-	const Image = options.Image || (options.Canvas ? options.Canvas.Image : window.Image);
-	if (options.Canvas && options.Canvas.version && options.Canvas.version.indexOf('1.') === 0) {
-		// Only needed for v1 of canvas
-		options.quality *= 100;
-	}
+	const Image = options.Image || window.Image;
 
 	// Load sources
 	const images = sources.map(source => new Promise((resolve, reject) => {
