@@ -43,7 +43,7 @@
   "devDependencies": {
     "ava": "^0.25.0",
     "camelcase": "^5.0.0",
-    "canvas": "^1.6.2",
+    "canvas": "^2.6.1",
     "coveralls": "^3.0.0",
     "datauri": "^1.0.5",
     "eslint-config-xo-lukechilds": "^1.0.0",

@@ -102,10 +102,11 @@ Usage in Node.js is the same, however you'll need to also require [node-canvas](
 
 ```js
 const mergeImages = require('merge-images');
-const Canvas = require('canvas');
+const { Canvas, Image } = require('canvas');
 
 mergeImages(['./body.png', './eyes.png', './mouth.png'], {
-  Canvas: Canvas
+  Canvas: Canvas,
+  Image: Image
 })
   .then(b64 => ...);
   // data:image/png;base64,iVBORw0KGgoAA...

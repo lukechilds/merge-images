@@ -14,10 +14,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 
 	// Setup browser/Node.js specific variables
 	const canvas = options.Canvas ? new options.Canvas() : window.document.createElement('canvas');
-	const Image = options.Canvas ? options.Canvas.Image : window.Image;
-	if (options.Canvas) {
-		options.quality *= 100;
-	}
+	const Image = options.Image || window.Image;
 
 	// Load sources
 	const images = sources.map(source => new Promise((resolve, reject) => {
@@ -53,13 +50,14 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 
 			if (options.Canvas && options.format === 'image/jpeg') {
 				// Resolve data URI for node-canvas jpeg async
-				return new Promise(resolve => {
+				return new Promise((resolve, reject) => {
 					canvas.toDataURL(options.format, {
 						quality: options.quality,
 						progressive: false
 					}, (err, jpeg) => {
 						if (err) {
-							throw err;
+							reject(err);
+							return;
 						}
 						resolve(jpeg);
 					});
