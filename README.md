@@ -47,13 +47,13 @@ And that would update the `img` element to show this image:
 
 ### Positioning
 
-Those source png images were already the right dimensions to be overlaid on top of each other. You can also supply an array of objects with x/y co-ords to manually position each image:
+Those source png images were already the right dimensions to be overlaid on top of each other. You can also supply an array of objects with top/right/bottom/left/x/y co-ords to manually position each image:
 
 ```js
 mergeImages([
-  { src: 'body.png', x: 0, y: 0 },
+  { src: 'body.png', left: 0, top: 0 },
   { src: 'eyes.png', x: 32, y: 0 },
-  { src: 'mouth.png', x: 16, y: 0 }
+  { src: 'mouth.png', right: -16, bottom: 0 }
 ])
   .then(b64 => ...);
   // data:image/png;base64,iVBORw0KGgoAA...
@@ -62,6 +62,24 @@ mergeImages([
 Using the same source images as above would output this:
 
 <img src="/test/fixtures/face-custom-positions.png" width="128">
+
+### Resize
+
+Those source png images were already the right dimensions to be overlaid on top of each other. You can also supply an array of objects with width/height to manually resize each image:
+
+```js
+mergeImages([
+  { src: 'body.png', left: 0, top: 0 },
+  { src: 'eyes.png', x: 32, y: 64, height: 180 },
+  { src: 'mouth.png', right: 32, bottom: 0, width: 128, height: 180 }
+])
+  .then(b64 => ...);
+  // data:image/png;base64,iVBORw0KGgoAA...
+```
+
+Using the same source images as above would output this:
+
+<img src="/test/fixtures/face-custom-height-width.png" width="128">
 
 ### Opacity
 

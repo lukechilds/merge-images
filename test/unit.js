@@ -62,9 +62,9 @@ test('mergeImages uses custom dimensions', async t => {
 test('mergeImages uses custom positions', async t => {
 	t.plan(1);
 	const images = await Promise.all([
-		{ src: 'body.png', x: 0, y: 0 },
-		{ src: 'eyes.png', x: 32, y: 0 },
-		{ src: 'mouth.png', x: 16, y: 0 }
+	  { src: 'body.png', left: 0, top: 0 },
+	  { src: 'eyes.png', x: 32, y: 0 },
+	  { src: 'mouth.png', right: -16, bottom: 0 }
 	].map(image => fixtures.getImage(image.src).then(src => {
 		image.src = src;
 		return image;
@@ -72,6 +72,23 @@ test('mergeImages uses custom positions', async t => {
 	const b64 = await mergeImages(images, { Canvas, Image });
 
 	const expectedB64 = await fixtures.getDataURI('face-custom-positions.png');
+
+	t.true(b64 === expectedB64);
+});
+
+test('mergeImages uses custom sizing', async t => {
+	t.plan(1);
+	const images = await Promise.all([
+    { src: 'body.png', left: 0, top: 0 },
+    { src: 'eyes.png', x: 32, y: 64, height: 180 },
+    { src: 'mouth.png', right: 32, bottom: 0, width: 128, height: 180 }
+	].map(image => fixtures.getImage(image.src).then(src => {
+		image.src = src;
+		return image;
+	})));
+	const b64 = await mergeImages(images, { Canvas, Image });
+
+	const expectedB64 = await fixtures.getDataURI('face-custom-height-width.png');
 
 	t.true(b64 === expectedB64);
 });
