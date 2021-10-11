@@ -39,9 +39,8 @@
     "url": "https://github.com/lukechilds/merge-images/issues"
   },
   "homepage": "https://github.com/lukechilds/merge-images",
-  "dependencies": {},
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^3.15.0",
     "camelcase": "^5.0.0",
     "canvas": "^2.6.1",
     "coveralls": "^3.0.0",
@@ -51,6 +50,6 @@
     "pify": "^3.0.0",
     "rollup": "^0.59.0",
     "rollup-plugin-buble": "^0.19.2",
-    "xo": "^0.18.2"
+    "xo": "^0.45.0"
   }
 }
