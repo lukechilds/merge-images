@@ -48,7 +48,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 				return ctx.drawImage(image.img, image.x || 0, image.y || 0);
 			});
 
-			if (options.Canvas && options.format === 'image/jpeg') {
+			if (options.Canvas && (options.format === 'image/jpeg' || options.format === 'image/webp')) {
 				// Resolve data URI for node-canvas jpeg async
 				return new Promise((resolve, reject) => {
 					canvas.toDataURL(options.format, {
