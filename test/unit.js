@@ -1,7 +1,7 @@
-import test from 'ava';
-import { Canvas, Image } from 'canvas';
 import mergeImages from '../';
 import fixtures from './fixtures';
+import { Canvas, Image } from 'canvas';
+import test from 'ava';
 
 test('mergeImages returns empty b64 string if nothing is passed in', async t => {
 	t.plan(1);
@@ -62,9 +62,9 @@ test('mergeImages uses custom dimensions', async t => {
 test('mergeImages uses custom positions', async t => {
 	t.plan(1);
 	const images = await Promise.all([
-	  { src: 'body.png', left: 0, top: 0 },
-	  { src: 'eyes.png', x: 32, y: 0 },
-	  { src: 'mouth.png', right: -16, bottom: 0 }
+		{ src: 'body.png', left: 0, top: 0 },
+		{ src: 'eyes.png', x: 32, y: 0 },
+		{ src: 'mouth.png', right: -16, bottom: 0 }
 	].map(image => fixtures.getImage(image.src).then(src => {
 		image.src = src;
 		return image;
@@ -79,9 +79,9 @@ test('mergeImages uses custom positions', async t => {
 test('mergeImages uses custom sizing', async t => {
 	t.plan(1);
 	const images = await Promise.all([
-    { src: 'body.png', left: 0, top: 0 },
-    { src: 'eyes.png', x: 32, y: 64, height: 180 },
-    { src: 'mouth.png', right: 32, bottom: 0, width: 128, height: 180 }
+		{ src: 'body.png', left: 0, top: 0 },
+		{ src: 'eyes.png', x: 32, y: 64, height: 180 },
+		{ src: 'mouth.png', right: 32, bottom: 0, width: 128, height: 180 }
 	].map(image => fixtures.getImage(image.src).then(src => {
 		image.src = src;
 		return image;

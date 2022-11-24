@@ -1,6 +1,6 @@
+import mergeImages from '../';
 import test from 'ava';
 import { Canvas, Image } from 'canvas';
-import mergeImages from '../';
 
 test('mergeImages rejects Promise if node-canvas instance isn\'t passed in', async t => {
 	t.plan(1);
