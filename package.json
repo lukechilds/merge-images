@@ -45,7 +45,7 @@
     "camelcase": "^5.0.0",
     "canvas": "^2.6.1",
     "coveralls": "^3.0.0",
-    "datauri": "^1.0.5",
+    "datauri": "^2.0.0",
     "eslint-config-xo-lukechilds": "^1.0.0",
     "nyc": "^11.0.2",
     "pify": "^3.0.0",
