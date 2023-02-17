@@ -1,6 +1,6 @@
+import mergeImages from '../';
 import test from 'ava';
 import { Canvas, Image } from 'canvas';
-import mergeImages from '../';
 
 test('mergeImages is a function', t => {
 	t.is(typeof mergeImages, 'function');
