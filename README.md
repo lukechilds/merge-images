@@ -28,6 +28,8 @@ or for quick testing:
 
 ## Usage
 
+For a quick try, run [quick-console-example.js](/quick-console-example.js) code inside browser's console.
+
 With the following images:
 
 `/body.png`|`/eyes.png`|`/mouth.png`
