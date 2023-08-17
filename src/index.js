@@ -18,17 +18,33 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 
 	// Load sources
 	const images = sources.map(source => new Promise((resolve, reject) => {
-		// Convert sources to objects
-		if (source.constructor.name !== 'Object') {
-			source = { src: source };
+	
+		function loadImage(src) {
+			const img = new Image();
+			img.crossOrigin = options.crossOrigin;
+			img.onerror = () => reject(new Error('Couldn\'t load image'));
+			img.onload = () => resolve(Object.assign({}, source, { img }));
+			img.src = src;
 		}
 
-		// Resolve source and img when loaded
-		const img = new Image();
-		img.crossOrigin = options.crossOrigin;
-		img.onerror = () => reject(new Error('Couldn\'t load image'));
-		img.onload = () => resolve(Object.assign({}, source, { img }));
-		img.src = source.src;
+		if (source.constructor.name === 'HTMLImageElement') {
+			source = { src: source.src };
+			loadImage(source.src);
+		} else {
+
+			// Convert sources to objects
+			if (source.constructor.name !== 'Object') {
+				source = { src: source };
+			}
+
+			if (source.image) {
+				source.src = source.image.src;
+				delete source.image;
+			}
+
+			// Resolve source and img when loaded
+			loadImage(source.src);
+		}
 	}));
 
 	// Get canvas context
