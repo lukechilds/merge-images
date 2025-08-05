@@ -2,7 +2,7 @@
 
 > Easily compose images together without messing around with canvas
 
-[![Build Status](https://travis-ci.org/lukechilds/merge-images.svg?branch=master)](https://travis-ci.org/lukechilds/merge-images)
+[![Build Status](https://github.com/lukechilds/merge-images/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/lukechilds/merge-images/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/lukechilds/merge-images/badge.svg?branch=master)](https://coveralls.io/github/lukechilds/merge-images?branch=master)
 [![npm](https://img.shields.io/npm/dm/merge-images.svg)](https://www.npmjs.com/package/merge-images)
 [![npm](https://img.shields.io/npm/v/merge-images.svg)](https://www.npmjs.com/package/merge-images)
