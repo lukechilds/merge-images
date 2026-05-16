@@ -2,8 +2,7 @@
 
 > Easily compose images together without messing around with canvas
 
-[![Build Status](https://travis-ci.org/lukechilds/merge-images.svg?branch=master)](https://travis-ci.org/lukechilds/merge-images)
-[![Coverage Status](https://coveralls.io/repos/github/lukechilds/merge-images/badge.svg?branch=master)](https://coveralls.io/github/lukechilds/merge-images?branch=master)
+[![CI](https://github.com/lukechilds/merge-images/actions/workflows/ci.yml/badge.svg)](https://github.com/lukechilds/merge-images/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/dm/merge-images.svg)](https://www.npmjs.com/package/merge-images)
 [![npm](https://img.shields.io/npm/v/merge-images.svg)](https://www.npmjs.com/package/merge-images)
 [![GitHub Donate](https://badgen.net/badge/GitHub/Sponsor/D959A7?icon=github)](https://github.com/sponsors/lukechilds)
@@ -13,6 +12,8 @@
 Canvas can be kind of a pain to work with sometimes, especially if you just need a canvas context to do something relatively simple like merge some images together. `merge-images` abstracts away all the repetitive tasks into one simple function call.
 
 Images can be overlaid on top of each other and repositioned. The function returns a Promise which resolves to a base64 data URI. Supports both the browser and Node.js.
+
+TypeScript declarations are included.
 
 ## Install
 
@@ -101,7 +102,7 @@ Which will look like this:
 
 ## Node.js Usage
 
-Usage in Node.js is the same, however you'll need to also require [node-canvas](https://github.com/Automattic/node-canvas) and pass it in via the options object.
+Usage in Node.js is the same, however you'll need to also install [node-canvas](https://github.com/Automattic/node-canvas) and pass it in via the options object.
 
 ```js
 const mergeImages = require('merge-images');
@@ -169,6 +170,13 @@ Type: `Canvas`<br>
 Default: `undefined`
 
 Canvas implementation to be used to allow usage outside of the browser. e.g Node.js with node-canvas.
+
+##### options.Image
+
+Type: `Image`<br>
+Default: `undefined`
+
+Image implementation to be used to allow usage outside of the browser. e.g Node.js with node-canvas.
 
 ##### options.crossOrigin
 
