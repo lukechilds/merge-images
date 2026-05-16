@@ -23,28 +23,14 @@
     "build": "npm run clean && rollup -c && tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json",
     "test": "npm run build && node --test test/*.test.mjs",
-    "lint": "xo",
+    "lint": "prettier --check .",
+    "format": "prettier --write .",
     "prepack": "npm run build"
   },
   "engines": {
     "node": ">=22"
   },
-  "xo": {
-    "rules": {
-      "@typescript-eslint/consistent-type-definitions": "off",
-      "@typescript-eslint/naming-convention": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-restricted-types": "off",
-      "@typescript-eslint/no-unsafe-assignment": "off",
-      "@typescript-eslint/no-unsafe-type-assertion": "off",
-      "@typescript-eslint/prefer-nullish-coalescing": "off",
-      "@typescript-eslint/promise-function-async": "off",
-      "import-x/extensions": "off",
-      "import-x/order": "off",
-      "unicorn/prefer-add-event-listener": "off",
-      "unicorn/prefer-logical-operator-over-ternary": "off"
-    }
-  },
+  "prettier": "prettier-config-standard",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lukechilds/merge-images.git"
@@ -63,14 +49,14 @@
     "url": "https://github.com/lukechilds/merge-images/issues"
   },
   "homepage": "https://github.com/lukechilds/merge-images",
-  "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/node": "^25.8.0",
     "canvas": "^3.2.3",
+    "prettier": "^3.8.3",
+    "prettier-config-standard": "^7.0.0",
     "rollup": "^4.60.4",
     "tslib": "^2.8.1",
-    "typescript": "^6.0.3",
-    "xo": "^2.0.2"
+    "typescript": "^6.0.3"
   }
 }

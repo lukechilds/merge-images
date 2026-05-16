@@ -31,18 +31,19 @@ or for quick testing:
 
 With the following images:
 
-`/body.png`|`/eyes.png`|`/mouth.png`
----|---|---
-<img src="/test/fixtures/body.png" width="128">|<img src="/test/fixtures/eyes.png" width="128">|<img src="/test/fixtures/mouth.png" width="128">
+| `/body.png`                                     | `/eyes.png`                                     | `/mouth.png`                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ------------------------------------------------ |
+| <img src="/test/fixtures/body.png" width="128"> | <img src="/test/fixtures/eyes.png" width="128"> | <img src="/test/fixtures/mouth.png" width="128"> |
 
 You can do:
 
 ```js
-import mergeImages from 'merge-images';
+import mergeImages from 'merge-images'
 
-mergeImages(['/body.png', '/eyes.png', '/mouth.png'])
-  .then(b64 => document.querySelector('img').src = b64);
-  // data:image/png;base64,iVBORw0KGgoAA...
+mergeImages(['/body.png', '/eyes.png', '/mouth.png']).then(
+  (b64) => (document.querySelector('img').src = b64)
+)
+// data:image/png;base64,iVBORw0KGgoAA...
 ```
 
 And that would update the `img` element to show this image:

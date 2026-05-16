@@ -1,23 +1,18 @@
 {
-	"compilerOptions": {
-		"declaration": true,
-		"declarationMap": true,
-		"exactOptionalPropertyTypes": true,
-		"isolatedModules": true,
-		"lib": [
-			"ES2020",
-			"DOM"
-		],
-		"module": "ESNext",
-		"moduleResolution": "Bundler",
-		"noUncheckedIndexedAccess": true,
-		"skipLibCheck": true,
-		"sourceMap": true,
-		"strict": true,
-		"target": "ES2020",
-		"types": []
-	},
-	"include": [
-		"src/**/*.ts"
-	]
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "exactOptionalPropertyTypes": true,
+    "isolatedModules": true,
+    "lib": ["ES2020", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "ES2020",
+    "types": []
+  },
+  "include": ["src/**/*.ts"]
 }
