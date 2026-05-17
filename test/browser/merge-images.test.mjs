@@ -1,8 +1,10 @@
+import {Buffer} from 'node:buffer';
 import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {expect, test} from '@playwright/test';
 
 const bundlePath = fileURLToPath(new URL('../../dist/index.umd.js', import.meta.url));
+const modulePath = new URL('../../dist/index.mjs', import.meta.url);
 const fixtureUrl = image => new URL(`../fixtures/${image}`, import.meta.url);
 
 const getDataUri = async image => {
@@ -20,6 +22,18 @@ const installBundle = async page => {
 	await page.addScriptTag({path: bundlePath});
 
 	expect(await page.evaluate(() => typeof globalThis.mergeImages)).toBe('function');
+};
+
+const installModuleBundle = async page => {
+	const moduleSource = await readFile(modulePath);
+	const moduleDataUrl = `data:text/javascript;base64,${Buffer.from(moduleSource).toString('base64')}`;
+
+	await page.goto('about:blank');
+	await page.addScriptTag({
+		type: 'module',
+		content: `import mergeImages from ${JSON.stringify(moduleDataUrl)}; globalThis.mergeImagesModule = mergeImages;`,
+	});
+	await page.waitForFunction(() => typeof globalThis.mergeImagesModule === 'function');
 };
 
 const composeExpectedBrowserImage = async (page, sources, options = {}) => page.evaluate(async ({sources, options}) => {
@@ -163,6 +177,19 @@ test('UMD browser build exposes mergeImages and returns a Promise', async ({page
 
 	expect(await page.evaluate(() => globalThis.mergeImages([]) instanceof Promise)).toBe(true);
 	expect(await page.evaluate(() => globalThis.mergeImages([]))).toBe('data:,');
+});
+
+test('ESM browser build exposes mergeImages and uses DOM defaults', async ({page}) => {
+	await installModuleBundle(page);
+
+	const fixtures = await getFixtureDataUris(['face.png']);
+	const dataUri = await page.evaluate(async image => globalThis.mergeImagesModule([image]), fixtures['face.png']);
+
+	expect(dataUri.startsWith('data:image/png;base64,')).toBe(true);
+	expect(await getBrowserImageSize(page, dataUri)).toEqual({
+		width: 256,
+		height: 256,
+	});
 });
 
 test('UMD browser build merges images with DOM Image and browser canvas', async ({page}) => {
