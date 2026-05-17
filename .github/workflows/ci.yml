@@ -44,3 +44,14 @@ jobs:
 
       - name: Test
         run: npm test
+
+      - name: Coverage
+        if: matrix.node-version == '22.x'
+        run: npm run coverage
+
+      - name: Upload coverage to Coveralls
+        if: matrix.node-version == '22.x'
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: coverage/lcov.info

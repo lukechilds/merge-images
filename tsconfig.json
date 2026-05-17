@@ -3,6 +3,7 @@
 		"declaration": true,
 		"declarationMap": true,
 		"exactOptionalPropertyTypes": true,
+		"inlineSources": true,
 		"isolatedModules": true,
 		"lib": [
 			"ES2020",
